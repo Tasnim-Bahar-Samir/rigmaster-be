@@ -102,6 +102,7 @@ class ProductView(viewsets.GenericViewSet):
 
     filterset_fields = {
        "id" : ["in"],
+       "slug" : ['exact',"in"],
         "title" : ["in"],
         "price": ['gte', 'lte', 'exact', 'gt', 'lt'],
         "category__slug" : ["in"],
