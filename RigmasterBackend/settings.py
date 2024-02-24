@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     # app
     "auth0",
     "user",
+    "product",
+    "inventory",
 ]
 
 MIDDLEWARE = [
