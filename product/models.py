@@ -47,7 +47,6 @@ class Product(models.Model):
     additional_information_html = RichTextField(blank=True, null=True)
     # selling_price = models.FloatField(null=True)
     price = models.FloatField(null=True)
-    slug = models.CharField(max_length=200, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 

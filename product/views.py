@@ -75,6 +75,14 @@ class CategoryView(viewsets.GenericViewSet):
     def retrieve(self, request, pk=None):
         serializer = self.get_serializer(self.get_object())
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def partial_update(self, request, pk=None):
+        serializer = self.get_serializer(
+            self.get_object(), data=request.data, partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def destroy(self, request, pk=None):
         self.get_object().delete()
@@ -129,6 +137,14 @@ class ProductView(viewsets.GenericViewSet):
     def retrieve(self, request, pk=None):
         serializer = self.get_serializer(self.get_object())
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def partial_update(self, request, pk=None):
+        serializer = self.get_serializer(
+            self.get_object(), data=request.data, partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def destroy(self, request, pk=None):
         self.get_object().delete()
@@ -178,6 +194,14 @@ class ProductImageView(viewsets.GenericViewSet):
     def retrieve(self, request, pk=None):
         serializer = self.get_serializer(self.get_object())
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def partial_update(self, request, pk=None):
+        serializer = self.get_serializer(
+            self.get_object(), data=request.data, partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def destroy(self, request, pk=None):
         self.get_object().delete()
