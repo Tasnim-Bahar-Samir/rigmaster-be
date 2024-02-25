@@ -29,8 +29,6 @@ class CodOrderSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'billing_address' : {'required': True},
             'products' : {'required': False},
-            'payment_status' : {'read_only': True},
-            'status' : {'read_only': True},
         }
 
     def validate(self, attrs):

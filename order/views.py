@@ -42,6 +42,7 @@ class CodOrderView(viewsets.GenericViewSet):
 
     filterset_fields = {
         "id": ["exact", "in"],
+        "status": ["exact", "in"],
     }
     search_fields = ["id",]
     ordering_fields = [ "created_at"]
