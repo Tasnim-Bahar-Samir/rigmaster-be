@@ -17,6 +17,3 @@ class ProductSizeVarient(models.Model):
     product = models.ForeignKey(Product, related_name="product_size_varient", blank=True, null=True, on_delete=models.CASCADE)
     size = models.ForeignKey(Size, related_name="product_stock_size", blank=True, null=True, on_delete=models.CASCADE)
     quantity = models.FloatField(default=0, null=True)
-    created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True)
-

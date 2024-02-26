@@ -12,10 +12,18 @@ class SizeSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "size_title": {"required": True},
         }
+    def validate(self, attrs):
+        # print(self.)
+        # if Supplier.objects.filter(phone_number=attrs.get('phone_number')).exists():
+        #     raise serializers.ValidationError({"phone_number": 'This suplier is already exists'})
 
+        return super().validate(attrs)
+
+    def create(self, validated_data):
+        return super().create(validated_data)
 
 class ProductSizeVarientSerializer(serializers.ModelSerializer):
-    # id = serializers.IntegerField(required=False)
+    id = serializers.IntegerField(required=False)
 
     class Meta:
         model = ProductSizeVarient
