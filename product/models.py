@@ -30,11 +30,8 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    id = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False, unique=True
-    )
-    title = models.CharField(max_length=255, null=True,unique=True)
-    slug = AutoSlugField(populate_from='title', null=True, blank=True, always_update=True)
+    title = models.CharField(max_length=255, null=True)
+    slug = models.CharField(max_length=255, null=True, unique=True)
     category = models.ForeignKey(
         Category,
         blank=True,
@@ -47,6 +44,7 @@ class Product(models.Model):
     additional_information_html = RichTextField(blank=True, null=True)
     # selling_price = models.FloatField(null=True)
     price = models.FloatField(null=True)
+    color= models.CharField(max_length=50, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 
@@ -55,9 +53,6 @@ class Product(models.Model):
 
 
 class ProductImage(models.Model):
-    id = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False, unique=True
-    )
     _sl = models.IntegerField(default=0, null=True)
     product = models.ForeignKey(
         Product, related_name="product_image", null=True, on_delete=models.CASCADE
@@ -71,5 +66,3 @@ class ProductImage(models.Model):
         quality=75,
     )
     is_feature = models.BooleanField(default=False, null=True)
-    created_at = models.DateTimeField(auto_now_add=True, null=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True)
