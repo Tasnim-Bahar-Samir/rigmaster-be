@@ -18,6 +18,8 @@ class ProductSizeVarientAdmin(admin.ModelAdmin):
     search_fields = ["id", "quantity"]
     list_display = (
         "id",
+        "product",
+        "size",
         "quantity",
     )
 admin.site.register(ProductSizeVarient, ProductSizeVarientAdmin)
