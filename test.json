@@ -1,0 +1,18 @@
+{
+  "purchase_order": [
+    {
+      "quantity": 1,
+      "product": 1,
+      "others_info": {
+        "product_size_varient": {
+          "size_title": "XL",
+          "quantity": 5
+        }
+      }
+    }
+  ],
+  "payment_status": "UNPAID",
+  "status": "PENDING",
+  "billing_address": "string",
+  "shipping_address": "string"
+}
