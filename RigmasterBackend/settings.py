@@ -205,7 +205,7 @@ CORS_ALLOWED_ORIGINS = os.environ["CORS_ALLOWED_ORIGINS"].split(",")
 SPECTACULAR_SETTINGS = {
     "TITLE": "Rigmaster | API Documentation",
     "DESCRIPTION": "Clothing E-Commerce Website for Rigmaster.",
-    "VERSION": "0.0.0-beta",
+    "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
     "SCHEMA_PATH_PREFIX_TRIM": True,
     # 'SERVE_AUTHENTICATION': ['rest_framework.authentication.SessionAuthentication'],
