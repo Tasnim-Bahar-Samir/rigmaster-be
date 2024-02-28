@@ -46,7 +46,7 @@ class CategoryView(viewsets.GenericViewSet):
         "title": ["exact", "in"],
     }
     search_fields = ["title",]
-    ordering_fields = ["title", "created_at"]
+    ordering_fields = ["title", "created_at","priority"]
 
     schema = AutoSchema()
 
