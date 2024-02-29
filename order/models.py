@@ -26,7 +26,7 @@ class CodOrder(models.Model):
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True
     )
-    payment_status = models.CharField(max_length=20, default="unpaid", choices=PAYMENT_STATUS)
+    payment_status = models.CharField(max_length=20, default="UNPAID", choices=PAYMENT_STATUS)
     status = models.CharField(max_length=20, default="PENDING", choices=ORDER_STATUS)
     billing_address = models.JSONField(null=True, blank=True)
     shipping_address = models.JSONField(null=True, blank=True)

@@ -7,6 +7,7 @@ from product.models import Product
 
 class Size(models.Model):
     size_title = models.CharField(max_length=20, null=True)
+    size_details = models.CharField(max_length=500, null=True)
     def __str__(self):
         return self.size_title
     created_at = models.DateTimeField(auto_now_add=True, null=True)

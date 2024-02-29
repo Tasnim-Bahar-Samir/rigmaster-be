@@ -48,7 +48,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'description_html': {'required': False},
             'additional_information_html': {'required': False},
             'price': {'required': True},
-            'color': {'required': True},
+            'color': {'required': False},
         }
 
     

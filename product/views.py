@@ -108,7 +108,7 @@ class ProductView(viewsets.GenericViewSet):
         "category__slug" : ["in"],
         "category__title" : ["in"],
     }
-    search_fields = ["title",]
+    search_fields = ["title","price","slug"]
     ordering_fields = ["title", "created_at"]
 
     schema = AutoSchema()
