@@ -60,10 +60,11 @@ class CodOrderSerializer(serializers.ModelSerializer):
                 quantity = product_size_varient.get('quantity', 0)
                 size = Size.objects.filter(size_title=size_title).first()
                 product_varient = ProductSizeVarient.objects.filter(product=_ordered.product, size=size)
-                print(quantity)
+                
                 if order.status == 'PENDING':
+                    print(quantity, product_varient.first().quantity)
                     updated_quantity =  product_varient.first().quantity - quantity
-                    product_varient.update(quantity=updated_quantity)
+                    # product_varient.update(quantity=updated_quantity)
                 elif order.status == 'CANCELLED':
                     updated_quantity =  product_varient.first().quantity + quantity
                     product_varient.update(quantity=updated_quantity)

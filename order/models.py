@@ -37,7 +37,7 @@ class CodPurchaseProduct(models.Model):
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True
     )
-    order = models.ForeignKey(CodOrder, null=True , related_name='purchase_order', on_delete=models.SET_NULL)
+    order = models.ForeignKey(CodOrder, null=True , related_name='purchase_order', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, null=True , related_name='purchase_order_product', on_delete=models.SET_NULL)
     quantity = models.FloatField(null=True)
     others_info = models.JSONField(null=True, blank=True)
