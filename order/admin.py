@@ -8,6 +8,7 @@ class CodOrderAdmin(admin.ModelAdmin):
     search_fields = ["id", "payment_status","status"]
     list_display = (
         'id',
+        'order_id',
         'payment_status',
         'status',
     )
