@@ -31,6 +31,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=255, null=True)
+    priority = models.FloatField(default=0, null=True)
     slug = models.CharField(max_length=255, null=True, unique=True)
     category = models.ForeignKey(
         Category,

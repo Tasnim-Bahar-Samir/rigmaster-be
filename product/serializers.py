@@ -43,6 +43,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
         extra_kwargs = {
             'title': {'required': True},
+            'priority': {'required': False},
             'category': {'required': True},
             'meta_description': {'required': False},
             'description_html': {'required': False},
