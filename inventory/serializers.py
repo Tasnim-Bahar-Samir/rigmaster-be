@@ -31,7 +31,9 @@ class ProductSizeVarientSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "product": {"required": False},
             "size": {"required": True},
-            "size_details": {"required": False}
+            "size_details": {"required": False},
+            "shirt_size_details": {"required": False},
+            "polo_size_details": {"required": False}
         }
 
     def to_representation(self, instance):
