@@ -44,7 +44,7 @@ class CodOrderView(viewsets.GenericViewSet):
         "id": ["exact", "in"],
         "status": ["exact", "in"],
     }
-    search_fields = ["id",]
+    search_fields = ["id","order_id"]
     ordering_fields = [ "created_at"]
 
     schema = AutoSchema()
