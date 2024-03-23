@@ -4,7 +4,7 @@ from inventory.models import Size, ProductSizeVarient
 
 # assets
 # serializer
-from product.serializers import ProductSerializer
+from product.serializers import ProductSerializer,ProductSerializer2
 from rest_framework import serializers
 
 
@@ -110,7 +110,7 @@ class  CustomPurchaseProductSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         data = super().to_representation(instance)
         if data["product"]:
-            data["product"] = ProductSerializer(
+            data["product"] = ProductSerializer2(
                 instance.product, context=self.context
             ).data
         return data
