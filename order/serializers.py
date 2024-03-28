@@ -1,3 +1,4 @@
+from django.db.models import Sum
 # model
 from .models import CodOrder, CodPurchaseProduct, CusotmOrder, CustomPurchaseProduct
 from inventory.models import Size, ProductSizeVarient
@@ -39,15 +40,28 @@ class CodOrderSerializer(serializers.ModelSerializer):
         }
 
     def validate(self, attrs):
-        # purchase_order = attrs.get('purchase_order', None)
-        # if purchase_order:
-        #     for i in purchase_order:
-        #         product = i.get('product')
-        #         total_quantity = Inventatory.objects.filter(inventory_product=product).aggregate(total_sum=Sum('inward_quantity'))['total_sum']
+        purchase_order = attrs.get('purchase_order', None)
+        if purchase_order:
+            for order_item in purchase_order:
+                product = order_item.get('product')
+                quantity_requested = order_item.get('quantity')
+                product_size_varient = order_item.get('others_info').get(
+                "product_size_varient", None
+                )
+                size_title = product_size_varient.get('size_title')  # Assuming you have size information in purchase order
+                size = Size.objects.filter(size_title=size_title).first()
 
-        #         if not total_quantity or i.get('quantity') >= total_quantity:
-        #             raise serializers.ValidationError({'stock_out': f"{product.title} stock out"})
+                if not size:
+                    raise serializers.ValidationError({'size': f"Size '{size_title}' not found"})
+
+                product_variants = ProductSizeVarient.objects.filter(product=product, size=size)
+                total_quantity = product_variants.aggregate(total=Sum('quantity'))['total']
+
+                if total_quantity is None or quantity_requested > total_quantity:
+                    raise serializers.ValidationError({'Insufficient Stock': f"{product.title} - {size_title}. Please update your cart."})
+
         return super().validate(attrs)
+
 
     def create(self, validated_data):
         purchase_order = validated_data.pop("purchase_order", [])
